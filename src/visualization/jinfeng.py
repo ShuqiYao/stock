@@ -28,3 +28,29 @@ plt.show(close_hk.plot())
 plot_data = pd.concat([close_sz,close_hk],axis=1)
 plot_data.columns = ['close_sz','close_hk']
 plt.show(plot_data.plot())
+
+
+
+
+
+
+
+#简单收益
+
+simple_rate = (close_sz-close_sz.shift(1))/close_sz.shift(1)
+
+simple_rate_sz =simple_rate.dropna()
+
+simple_rate_2 = (close_hk-close_hk.shift(1))/close_hk.shift(1)
+
+simple_rate_hk = simple_rate_2.dropna()
+
+simple_rate_plot = pd.concat([simple_rate_sz,simple_rate_hk],axis=1)
+simple_rate_plot.columns = ['sz_rate','hk_rate']
+
+simple_rate_plot.plot()
+
+
+#compare if two curves have any differences
+
+# maybe we can try to use some
